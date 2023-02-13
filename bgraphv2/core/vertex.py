@@ -1,4 +1,5 @@
 from typing import Union
+
 class Vertex:
     def __init__(self, key: Union[int, str]):
         """Initialization method for Vertex class.
