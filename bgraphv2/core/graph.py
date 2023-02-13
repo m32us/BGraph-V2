@@ -1,59 +1,71 @@
 from .vertex import Vertex
 
+from typing import Union
+
+
 class Graph:
+    """Lớp đồ thị (Graph class)
+    """
+
     def __init__(self):
-        # List of vertices in the graph
+        """Phương thức khởi tạo đồ thị rỗng, mới.
+        """
+        # Danh sách các đỉnh
         self.vertList = {}
 
-        # Number of vertices in the graph
+        # Số lượng đỉnh trong đồ thị
         self.numVertices = 0
 
-    def addVertex(self, key):
-        """Add vertex to graph
+    def addVertex(self, key: Union[int, str]) -> Vertex:
+        """Phương thức thêm đỉnh có `key` vào đồ thị
 
-        Args:
-            key (_type_): _description_
+        Tham số:
+            key (Union[int, str]): key của đỉnh cần thêm vào đồ thị.
 
-        Returns:
-            _type_: _description_
+        Trả về:
+            Vertex: đối tượng thuộc lớp Vertex thể hiện đỉnh vừa thêm vào đồ thị.
         """
+
         self.numVertices = self.numVertices + 1
         newVertex = Vertex(key)
         self.vertList[key] = newVertex
+
         return newVertex
 
-    def getVertex(self, n):
-        """Get a vertex from the graph.
+    def getVertex(self, n: Union[int, str]) -> Union[Vertex, None]:
+        """Phương thức lấy một đỉnh có khóa hay nhãn là `n` ra từ danh sách các đỉnh của đồ thị.
 
-        Args:
-            n (_type_): _description_
+        Tham số:
+            n (Union[int, str]): key của đỉnh cần lấy ra từ đồ thị.
 
-        Returns:
-            _type_: _description_
+        Trả về:
+            Union[Vertex, None]: Trả về đối tượng thuộc lớp Vertex thể hiện đỉnh cần lấy ra từ đồ thị.
+            Nếu đỉnh không tồn tại, trả về None.
         """
         if n in self.vertList:
             return self.vertList[n]
         else:
             return None
 
-    def __contains__(self, n):
-        """Check whether vertex exists in the graph.
+    def __contains__(self, n) -> bool:
+        """Phương thức kiểm tra liệu một đỉnh có nằm trong đồ thị hay không.
+        Tức là kiểm tra đỉnh đầu vào có nằm trong danh sách các đỉnh của đồ thị hay không?
 
-        Args:
-            n (_type_): _description_
+        Tham số:
+            n (Union[int, str]): key của đỉnh cần lấy ra từ đồ thị.
 
-        Returns:
-            _type_: _description_
+        Trả về:
+            bool: Nếu đỉnh có tồn tại trong danh sách các đỉnh, trả về True. Ngược lại, False.
         """
         return n in self.vertList
 
-    def addEdge(self, f, t, weight=0):
-        """Add edge to the graph.
+    def addEdge(self, f: Union[int, str], t: Union[int, str], weight: int = 0):
+        """Phương thức thêm cạnh, có hướng vào đồ thị nối hai đỉnh `f` và `t`.
 
-        Args:
-            f (_type_): indexing of the start vertex.
-            t (_type_): indexing of the end vertex.
-            weight (int, optional): _description_. Defaults to 0.
+        Tham số:
+            f (Union[int, str]): Khóa của đỉnh bắt đầu.
+            t (Union[int, str]): Khóa của đỉnh kết thúc.
+            weight (int, optional): Trọng số của cạnh nối hai đỉnh. Mặc định là 0.
         """
         if f not in self.vertList:
             nv = self.addVertex(f)
@@ -61,18 +73,18 @@ class Graph:
             nv = self.addVertex(t)
         self.vertList[f].addNeighbor(self.vertList[t], weight)
 
-    def getVertices(self):
-        """_summary_
+    def getVertices(self) -> list:
+        """Phương thức trả về danh sách tất cả các đỉnh trong đồ thị.
 
-        Returns:
-            _type_: _description_
+        Tham số:
+            list: Danh sách tất ca các đỉnh trong đồ thi.
         """
         return self.vertList.keys()
 
     def __iter__(self):
-        """_summary_
+        """Phương thức duyệt các đối tượng đỉnh trong đồ thị.
 
-        Returns:
-            _type_: _description_
+        Trả về:
+            _type_: Bộ duyệt duyệt các đối tượng đỉnh trong đồ thị.
         """
         return iter(self.vertList.values())
