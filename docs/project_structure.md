@@ -6,5 +6,6 @@ Cấu trúc project
     - generators: bộ phát sinh đồ thị ngẫu nhiên
     - seed: bộ xử lý phát sinh số học ngẫu nhiên
     - utils: các bộ xử lý hỗ trợ như đọc ghi tập tin, tiền xử lý
-    - docs: thư mục chứa tài liệu
-    - test: kiểm thử, sử dụng unittest
+- data: chứa dữ liệu (nếu có)
+- docs: thư mục chứa tài liệu
+- test: kiểm thử, sử dụng unittest
