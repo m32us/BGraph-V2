@@ -10,7 +10,7 @@ class DFS(WhateverFirstSearch):
         stack.append(self.start)
 
         current_node_id = self.start
-
+        
         while len(stack) > 0:
 
             current_node_id = stack.pop()
@@ -19,13 +19,12 @@ class DFS(WhateverFirstSearch):
             # for node in self.G.getVertex(current_node_id).getConnections():
             #     print(node.id)
 
-            for neighbor in self.G.getVertex(current_node_id).getConnections():
+            for neighbor in self.G.getVertex(str(current_node_id)).getConnections():
 
-                id_node_neighbor = neighbor.id
+                id_node_neighbor = neighbor.getId()
 
                 # print(id_node_neighbor)
                 if id_node_neighbor not in visited:
-                    print("Visiting neighbor ", id_node_neighbor)
                     stack.append(id_node_neighbor)
                     visited.append(id_node_neighbor)
 

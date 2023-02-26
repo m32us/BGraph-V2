@@ -88,3 +88,47 @@ class Graph:
             _type_: Bộ duyệt duyệt các đối tượng đỉnh trong đồ thị.
         """
         return iter(self.vertList.values())
+    
+    @classmethod
+    def build_graph_from_file(cls, filename, delimiter = " "):
+        """ Phương thức xây dựng đồ thị từ danh sách kề
+
+        Tham số:
+            filename: file chưa danh sách kề
+
+        Trả về:
+            Đồ thị 
+        """
+        g = cls()
+        edge_list = dict()
+        for line in open(filename,'U'):
+            L = line.strip().split(delimiter)
+            if (L[0] not in g.getVertices()):
+                    g.addVertex(L[0])
+            for i in range(1, len(L)):
+                if (L[i] not in g.getVertices()):
+                    g.addVertex(L[i])
+                g.addEdge(L[0], L[i])
+        return g
+    
+    @classmethod
+    def build_graph_from_edge_list(cls, d):
+        """ Phương thức xây dựng đồ thị từ danh sách kề
+
+        Tham số:
+            d: danh sách kề
+
+        Trả về:
+            Đồ thị 
+        """
+        g = cls()
+        for v1, v2_list in d.items():
+            if (v1 not in g.getVertices()):
+                    g.addVertex(v1)
+            for v2 in v2_list:
+                if (v2 not in g.getVertices()):
+                    g.addVertex(v2)
+                g.addEdge(v1, v2)
+
+        return g
+

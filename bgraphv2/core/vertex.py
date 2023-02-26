@@ -55,10 +55,10 @@ class Vertex:
     def getWeight(self, nbr) -> int:
         """Phương thức lấy trọng số của cạnh được truyền theo tham số.
 
-        Args:
+        Tham số:
             nbr (_type_): khóa hay nhãn thể hiện của đỉnh lân cận với đối tượng đỉnh.
 
-        Returns:
+        Trả về:
             int: Trọng số của cạnh được truyền theo tham số.
         """
         return self.connectedTo[nbr]
