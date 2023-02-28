@@ -1,6 +1,3 @@
-print("Hello")
-
-# test
 from bgraphv2.core import Graph
 from bgraphv2.algorithms import DFS, BFS
 
@@ -87,7 +84,3 @@ print("Following is the Depth-First Search")
 dfs = DFS(5, g).search()
 print("Following is the Breadth-First Search")
 dfs = BFS(5, g).search()
-
-
-
-

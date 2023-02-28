@@ -85,10 +85,10 @@ class Graph:
         """Phương thức duyệt các đối tượng đỉnh trong đồ thị.
 
         Trả về:
-            _type_: Bộ duyệt duyệt các đối tượng đỉnh trong đồ thị.
+            SupportsNextT@iter: Bộ duyệt duyệt các đối tượng đỉnh trong đồ thị.
         """
         return iter(self.vertList.values())
-    
+
     @classmethod
     def build_graph_from_file(cls, filename, delimiter = " "):
         """ Phương thức xây dựng đồ thị từ danh sách kề
@@ -97,7 +97,7 @@ class Graph:
             filename: file chưa danh sách kề
 
         Trả về:
-            Đồ thị 
+            Đồ thị
         """
         g = cls()
         edge_list = dict()
@@ -110,7 +110,7 @@ class Graph:
                     g.addVertex(L[i])
                 g.addEdge(L[0], L[i])
         return g
-    
+
     @classmethod
     def build_graph_from_edge_list(cls, d):
         """ Phương thức xây dựng đồ thị từ danh sách kề
@@ -119,7 +119,7 @@ class Graph:
             d: danh sách kề
 
         Trả về:
-            Đồ thị 
+            Đồ thị
         """
         g = cls()
         for v1, v2_list in d.items():
